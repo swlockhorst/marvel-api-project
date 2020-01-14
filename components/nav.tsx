@@ -7,7 +7,7 @@ interface Links {
 }
 
 const links: Links[] = [
-  { href: 'https://github.com/swlockhorst/marvel-api-project', label: 'Github',
+  { href: '', label: 'Github',
       key: ''
   }
 ].map(link => {

@@ -1,15 +1,14 @@
 import Head from '../components/head';
 import Nav from "../components/nav";
-import getCharacter from "../api/character/getCharacter";
+import SearchBar from "../components/searchBar";
+
 
 export default () => (
     <div>
         <Head title="Home" />
         <Nav />
         <div className="hero">
-            <button onClick={() => {
-                getCharacter('wolverine').then(r => console.log(r.data.data.results));
-            }}>Click me</button>
+            <SearchBar />
         </div>
     </div>
 );
