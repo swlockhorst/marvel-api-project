@@ -1,4 +1,4 @@
-import {useEffect, useState, useLayoutEffect, useRef } from 'react';
+import {useEffect, useState, useRef } from 'react';
 
 const md5 = require('js-md5');
 

@@ -1,6 +1,12 @@
 import Link from 'next/link'
 
-const links: any = [
+interface Links {
+    href: string;
+    label: string;
+    key?: string;
+}
+
+const links: Links[] = [
   { href: 'https://github.com/swlockhorst/marvel-api-project', label: 'Github',
       key: ''
   }
@@ -22,8 +28,6 @@ const appLinks = [
     return link
 });
 
-// @ts-ignore
-// @ts-ignore
 const Nav = () => (
   <nav>
     <ul>
@@ -36,7 +40,6 @@ const Nav = () => (
         ))}
       <ul>
         {links.map(
-            // @ts-ignore
           ({ key, href, label }) => (
             <li key={key}>
               <Link href={href}>
