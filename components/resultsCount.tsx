@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import CharactersContext from '../context/charactersContext';
 
 const ResultsCount = () => {
-    // @ts-ignore
-    const [count, setCount] = useState(0);
-
-    return <div>{count}</div>;
+    const value = useContext(CharactersContext);
+    console.log(value);
+    return <div>{/*<div>{value.hello}</div>*/}</div>;
 };
 
 export default ResultsCount;
