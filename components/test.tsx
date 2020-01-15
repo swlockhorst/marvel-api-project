@@ -31,9 +31,9 @@ const Test = () => {
         }
     }, [url]);
 
-    // useEffect(() => {
-    //     console.log(data);
-    // }, [data]);
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     return (
         <>

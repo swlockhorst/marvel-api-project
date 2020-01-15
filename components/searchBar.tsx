@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import getCharacter from "../api/character/getCharacter";
+// import {log} from "util";
 
 const SearchBar = () => {
         const [query, setQuery] = useState('');
         const [data, setData] = useState([]);
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
         return (
             <div>
@@ -11,10 +16,8 @@ const SearchBar = () => {
 
                 <button onClick={() => {
                     getCharacter(query).then(r => setData(r.data.data.results));
-                    console.log(data);
                 }}>Click me
                 </button>
-
             </div>
         )
     }
