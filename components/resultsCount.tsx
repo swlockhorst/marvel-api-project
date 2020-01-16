@@ -4,7 +4,8 @@ import CharactersContext from '../context/charactersContext';
 const ResultsCount = () => {
     const value = useContext(CharactersContext);
     console.log(value);
-    return <div>{/*<div>{value.hello}</div>*/}</div>;
+    // @ts-ignore
+    return <button></button>;
 };
 
 export default ResultsCount;

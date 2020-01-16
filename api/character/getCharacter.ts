@@ -1,7 +1,7 @@
 import axios from 'axios';
 import hashMaker from "../../helpers/hashMaker";
 
-async function getCharacter(query: string) {
+async function fetchCharacter(query: string) {
     let apiGateway = process.env.API_GATEWAY;
     let url = `${apiGateway}/characters?nameStartsWith=${query}${hashMaker()}`;
     try {
@@ -12,4 +12,4 @@ async function getCharacter(query: string) {
     }
 }
 
-export default getCharacter;
+export default fetchCharacter;
