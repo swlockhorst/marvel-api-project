@@ -1,15 +1,11 @@
-// @ts-ignore
-import React, { useContext, useEffect, useState } from 'react';
-import { CharactersContext } from '../context/charactersContext';
+import React, { useContext, useState, useEffect } from 'react';
+import { Characters } from '../context/charactersContext';
 
 const SearchBar = () => {
-    const [query, setQuery] = useState('');
-    // const [data, setData] = useState([CharactersContext]);
+    const [query, setQuery] = useState();
+    const { updateQuery } = useContext(Characters);
 
-    // @ts-ignore
-    const { updateQuery } = useContext(CharactersContext);
-
-    useEffect(() => {}, []);
+    useEffect(() => {}, [query]);
 
     function executeSearch(searchQuery: string) {
         if (typeof updateQuery === 'function') {
@@ -34,7 +30,7 @@ const SearchBar = () => {
                     query.length > 0 && executeSearch(query);
                 }}
             >
-                Click me
+                Search: {query}
             </button>
         </div>
     );
