@@ -1,5 +1,5 @@
 import axios from 'axios';
-import hashMaker from "../../helpers/hashMaker";
+import hashMaker from '../helpers/hashMaker';
 
 async function fetchCharacter(query: string) {
     let apiGateway = process.env.API_GATEWAY;

@@ -1,11 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Characters } from '../context/charactersContext';
 
 const SearchBar = () => {
     const [query, setQuery] = useState();
     const { updateQuery } = useContext(Characters);
-
-    useEffect(() => {}, [query]);
 
     function executeSearch(searchQuery: string) {
         if (typeof updateQuery === 'function') {
@@ -30,7 +28,7 @@ const SearchBar = () => {
                     query.length > 0 && executeSearch(query);
                 }}
             >
-                Search: {query}
+                Search
             </button>
         </div>
     );

@@ -1,13 +1,10 @@
 import Head from '../components/head';
 import Nav from '../components/nav';
-import CharactersProvider, { Characters } from '../context/charactersContext';
+import CharactersProvider from '../context/charactersContext';
 import SearchBar from '../components/searchBar';
-// @ts-ignore
-import { useContext, useEffect, useState } from 'react';
+import SearchResults from '../components/searchResults';
 
-export default () => {
-    const results = useContext(Characters);
-
+const CharactersPage = () => {
     return (
         <CharactersProvider>
             <div>
@@ -15,11 +12,11 @@ export default () => {
                 <Nav />
                 <div className="hero">
                     <SearchBar />
-                    {JSON.stringify(results)}
-
-                    {/* selected result with selectable tabs/sections to display more info */}
+                    <SearchResults />
                 </div>
             </div>
         </CharactersProvider>
     );
 };
+
+export default CharactersPage;
