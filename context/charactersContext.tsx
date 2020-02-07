@@ -1,11 +1,14 @@
 import React, { createContext, useState, ReactElement } from 'react';
-import fetchCharacter from '../api/getCharacter';
+import fetchCharacter from '../api/character/getCharacter';
+import fetchCharacterById from '../api/character/getCharacterbyId';
 
 // @ts-ignore
 export const Characters = createContext();
 
 const CharactersProvider = (props: { children: ReactElement }) => {
     const [characters, setCharacters] = useState(null);
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
+    console.log('>> root context', selectedCharacter);
 
     function updateQuery(query: string) {
         if (query === null) return;
@@ -16,11 +19,23 @@ const CharactersProvider = (props: { children: ReactElement }) => {
         getCharacter();
     }
 
+    function updateSelectedCharacter(id: string) {
+        if (id === null) return;
+
+        async function getCharacterById() {
+            const response = await fetchCharacterById(id);
+            setSelectedCharacter(response.data.data.results);
+        }
+        getCharacterById();
+    }
+
     return (
         <Characters.Provider
             value={{
                 characters,
+                selectedCharacter,
                 updateQuery,
+                updateSelectedCharacter,
             }}
         >
             {props.children}

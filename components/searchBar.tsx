@@ -25,7 +25,7 @@ const SearchBar = () => {
             />
             <button
                 onClick={() => {
-                    query.length > 0 && executeSearch(query);
+                    query && query.length > 0 && executeSearch(query);
                 }}
             >
                 Search

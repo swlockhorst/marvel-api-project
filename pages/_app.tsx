@@ -1,44 +1,49 @@
 import { Global, css } from '@emotion/core';
 import emotionReset from 'emotion-reset';
+import CharactersProvider from '../context/charactersContext';
+import { ThemeProvider } from 'emotion-theming';
+
+const theme = {
+    colors: {
+        background: '#0000',
+        green: '#0c833d',
+        yellow: '#D89E40',
+        red: '#F6564C',
+    },
+};
+
 // import App from 'next/app'
 // @ts-ignore
 function MyApp({ Component, pageProps }) {
     return (
-        <>
-            <Global
-                styles={css`
-                    ${emotionReset}
+        <ThemeProvider theme={theme}>
+            <CharactersProvider>
+                <>
+                    <Global
+                        styles={css`
+                            ${emotionReset}
 
-                    *, *::after, *::before {
-                        box-sizing: border-box;
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-smoothing: antialiased;
-                    }
-                    /* body {
-                        background: #000000;
-                        color: #0c833d;
+                            *, *::after, *::before {
+                                box-sizing: border-box;
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                font-smoothing: antialiased;
+                            }
 
-                        a {
-                            color: #14f074 !important;
-                        }
+                            @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
-                        input {
-                            background: #063315;
-                            border-color: #002b0d;
-                            color: #0c833d;
-                        }
+                            body {
+                                font-family: 'Roboto Mono', monospace;
+                                background: #000;
+                                color: #d89e40;
+                            }
+                        `}
+                    />
 
-                        button {
-                            background: #063315;
-                            border-color: #002b0d;
-                            color: #0c833d;
-                        }
-                    } */
-                `}
-            />
-            <Component {...pageProps} />
-        </>
+                    <Component {...pageProps} />
+                </>
+            </CharactersProvider>
+        </ThemeProvider>
     );
 }
 
