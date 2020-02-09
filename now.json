@@ -1,0 +1,9 @@
+{
+    "build": {
+        "env": {
+            "PUBLIC_KEY": "@public_key",
+            "SECRET_KEY": "@secret_key",
+            "API_GATEWAY": "@api_gateway"
+        }
+    }
+}
