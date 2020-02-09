@@ -8,7 +8,6 @@ export const Characters = createContext();
 const CharactersProvider = (props: { children: ReactElement }) => {
     const [characters, setCharacters] = useState(null);
     const [selectedCharacter, setSelectedCharacter] = useState(null);
-    console.log('>> root context', selectedCharacter);
 
     function updateQuery(query: string) {
         if (query === null) return;

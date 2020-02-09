@@ -5,9 +5,11 @@ import { Character } from '../interfaces/character';
 import Card from './card';
 import { css } from '@emotion/core';
 import AspectRatio from './aspectRatio';
+// import { useTheme } from 'emotion-theming';
 
 const CharacterProfile = () => {
     const { selectedCharacter } = useContext(Characters);
+    // const theme = useTheme();
     return (
         <div>
             {selectedCharacter ? (

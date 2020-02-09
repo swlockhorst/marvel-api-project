@@ -1,15 +1,29 @@
 import React, { useContext } from 'react';
 import { Characters } from '../context/charactersContext';
 import { Character } from '../interfaces/character';
-import styled from '@emotion/styled';
 import Card from '../components/card';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 const Result = styled.button`
+    background: none;
+    padding: 20px;
+    border-radius: 20px;
+    color: red;
+`;
+
+const ResultInner = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 5px;
-    margin-bottom: 5px;
-    width: 100%;
+`;
+
+const ResultContent = styled.div`
+    text-align: left;
+`;
+
+const ResultCount = styled.div`
+    text-align: left;
+    margin-bottom: 20px;
 `;
 
 const SearchResults = () => {
@@ -22,23 +36,36 @@ const SearchResults = () => {
 
     return (
         <div>
-            results count: {characters ? characters.length : '0'}
-            {characters ? (
-                characters.map((item: Character, i: number) => (
-                    <Result
-                        key={i}
-                        onClick={() => {
-                            console.log('>> Selected ID:', item.id);
-                            executeSearch(item.id);
-                        }}
-                    >
-                        <div>ID: {item.id}</div>
-                        <div>Name: {item.name}</div>
-                    </Result>
-                ))
-            ) : (
-                <Card>no results to display</Card>
-            )}
+            <ResultCount>
+                results count: {characters ? characters.length : '0'}
+            </ResultCount>
+            <div
+                css={css`
+                    display: flex;
+                    flex-direction: column;
+                `}
+            >
+                {characters ? (
+                    characters.map((item: Character, i: number) => (
+                        <Result
+                            key={i}
+                            onClick={() => {
+                                executeSearch(item.id);
+                            }}
+                            css={css`
+                                margin-bottom: ${characters ? '20px' : 0};
+                            `}
+                        >
+                            <ResultInner>
+                                <ResultContent>ID: {item.id}</ResultContent>
+                                <ResultContent>Name: {item.name}</ResultContent>
+                            </ResultInner>
+                        </Result>
+                    ))
+                ) : (
+                    <Card>no results to display</Card>
+                )}
+            </div>
         </div>
     );
 };

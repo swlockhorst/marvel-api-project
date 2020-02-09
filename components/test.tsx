@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const md5 = require('js-md5');
 
@@ -11,7 +11,9 @@ const Test = () => {
 
     const [data, setData] = useState([]);
     const [query, setQuery] = useState('');
-    const [url, setUrl] = useState(`${apiGateway}/v1/public/characters?name=${query}&ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`);
+    const [url, setUrl] = useState(
+        `${apiGateway}/v1/public/characters?name=${query}&ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`
+    );
 
     const isFirstRun = useRef(true);
 
@@ -31,41 +33,45 @@ const Test = () => {
         }
     }, [url]);
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     return (
         <>
             <div>
-                <input type="text" value={query} onChange={event => setQuery(event.target.value)}/>
+                <input
+                    type="text"
+                    value={query}
+                    onChange={event => setQuery(event.target.value)}
+                />
 
                 <button
                     onClick={() => {
-                        setUrl(`${apiGateway}/v1/public/characters?name=${query}&ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`);
+                        setUrl(
+                            `${apiGateway}/v1/public/characters?name=${query}&ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`
+                        );
                     }}
                 >
                     Click me!
                 </button>
             </div>
             <div>{query}</div>
-            <br/>
+            <br />
             <div>{url}</div>
 
             {data.map(thing => {
                 return (
                     <div key={thing.id}>
-                        <img src={`${thing.thumbnail.path}.${thing.thumbnail.extension}`} />
-                        <br/>
+                        <img
+                            src={`${thing.thumbnail.path}.${thing.thumbnail.extension}`}
+                        />
+                        <br />
                         {thing.name}
-                        <br/>
+                        <br />
                         {thing.description}
-                        <br/>
+                        <br />
                     </div>
-                )
+                );
             })}
         </>
-    )
+    );
 };
 
 export default Test;

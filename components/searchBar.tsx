@@ -1,5 +1,21 @@
 import React, { useContext, useState } from 'react';
 import { Characters } from '../context/charactersContext';
+import styled from '@emotion/styled';
+
+const SearchContainer = styled.div`
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+`;
+
+const SearchInput = styled.input`
+    flex: 1 1 auto;
+    padding: 6px;
+`;
+
+const SearchButton = styled.button`
+    flex: 0 0 auto;
+`;
 
 const SearchBar = () => {
     const [query, setQuery] = useState();
@@ -12,8 +28,8 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
-            <input
+        <SearchContainer>
+            <SearchInput
                 type="text"
                 value={query}
                 onChange={event => setQuery(event.target.value)}
@@ -23,14 +39,14 @@ const SearchBar = () => {
                     }
                 }}
             />
-            <button
+            <SearchButton
                 onClick={() => {
                     query && query.length > 0 && executeSearch(query);
                 }}
             >
                 Search
-            </button>
-        </div>
+            </SearchButton>
+        </SearchContainer>
     );
 };
 
