@@ -58,7 +58,7 @@ export interface Comic {
     prices: [
         {
             type: string;
-            price: float;
+            price: number;
         }
     ];
     thumbnail: {
